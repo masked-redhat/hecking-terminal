@@ -52,26 +52,47 @@ body {
 }
 
 #terminal-content {
-    width: 100%;
     height: 100%;
     color: white;
     background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(var(--terminal-border-flow));
     padding: 1rem;
     font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding-left: 2rem;
+    position: relative;
 }
 
 .command {
     color: rgb(0, 160, 0);
-    margin-bottom: 0.4rem;
-    min-height: 1.2rem;
+}
+
+.command>* {
+    vertical-align: bottom;
+}
+
+.unchecked::before,
+.checked::before {
+    position: absolute;
+    left: 0.7rem;
+    color: rgb(0, 207, 0);
+}
+
+.unchecked::before {
+    content: "--";
+}
+
+.checked::before {
+    content: "✓";
+    transform: translateY(-0.2rem);
 }
 
 #cursor {
-    width: 10px;
-    height: 1.2rem;
-    /* margin-left: -0.4rem; */
-    transform: translateY(0.2rem);
+    width: 5px;
+    height: 1.4rem;
+    transform: translateX(0.2rem);
     background: #fff;
     display: inline-block;
     animation: blink 0.38s ease infinite;
